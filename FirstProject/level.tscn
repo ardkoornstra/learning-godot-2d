@@ -5,5 +5,5 @@
 [node name="Level" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(960, 206)
+position = Vector2(769, 234)
 texture = ExtResource("1_huinr")

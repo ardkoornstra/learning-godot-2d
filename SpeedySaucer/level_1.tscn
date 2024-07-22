@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://duottj0unibfp"]
+[gd_scene load_steps=5 format=3 uid="uid://duottj0unibfp"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_0vswc"]
 [ext_resource type="Texture2D" uid="uid://dfgp3520x8njl" path="res://purple.png" id="1_lnm24"]
 [ext_resource type="PackedScene" uid="uid://cto86hdnkxjrj" path="res://player.tscn" id="2_owxmo"]
+[ext_resource type="PackedScene" uid="uid://b57r6jwvo56p1" path="res://map.tscn" id="4_wmiga"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_0vswc")
@@ -16,5 +17,9 @@ texture = ExtResource("1_lnm24")
 stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_owxmo")]
+z_index = 2
+position = Vector2(436, 624)
+
+[node name="Map" parent="." instance=ExtResource("4_wmiga")]
 z_index = 1
-position = Vector2(316, 362)
+position = Vector2(475, 674)

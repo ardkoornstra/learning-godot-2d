@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://j44emcw7fyr7"]
+[gd_scene load_steps=3 format=3 uid="uid://j44emcw7fyr7"]
+
+[ext_resource type="Texture2D" uid="uid://j6uwng0wpcse" path="res://assets/textures/blue.png" id="1_b4a5h"]
+[ext_resource type="PackedScene" uid="uid://deal4gvv4rl35" path="res://scenes/player.tscn" id="2_hilvr"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -34.0
+offset_top = -20.0
+offset_right = 1318.0
+offset_bottom = 742.0
+texture = ExtResource("1_b4a5h")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("2_hilvr")]
+position = Vector2(233, 366)

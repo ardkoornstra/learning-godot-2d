@@ -1,5 +1,7 @@
 extends Node2D
 
+signal enemySpawned(instance)
+
 var enemyScene = preload("res://scenes/enemy.tscn")
 @onready var spawners = $Spawners
 
@@ -11,4 +13,4 @@ func spawnEnemy():
 	var selectedSpawner = spawnersArray.pick_random()
 	var enemyInstance = enemyScene.instantiate()
 	enemyInstance.global_position = selectedSpawner.global_position
-	add_child(enemyInstance)
+	enemySpawned.emit(enemyInstance)

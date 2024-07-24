@@ -13,6 +13,6 @@ rotation = 1.5708
 texture = ExtResource("1_kcpaq")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(37, 0, 14, 11, -6, 53, -33, 37, -37, 12, -37, -12, -33, -37, -6, -53, 16, -11)
+polygon = PackedVector2Array(37, 0, 16, 11, -6, 53, -33, 37, -37, 12, -37, -12, -33, -37, -6, -53, 16, -11)
 
 [node name="LaserContainer" type="Node" parent="."]

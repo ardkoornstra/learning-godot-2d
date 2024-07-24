@@ -24,11 +24,11 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	var screenSize = get_viewport_rect().size
-	global_position = global_position.clamp(Vector2(0,0),screenSize)
+	global_position = global_position.clamp(Vector2(0,0),Vector2(screenSize.x*0.7,screenSize.y))
 	
 
 func shoot():
-	var laserInstance = laserScene.instantiate()
-	containerNode.add_child(laserInstance)
+	var laserInstance = laserScene.instantiate()	
 	laserInstance.global_position = global_position
 	laserInstance.global_position.x += 50
+	containerNode.add_child(laserInstance)

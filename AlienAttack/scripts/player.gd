@@ -1,6 +1,13 @@
 extends CharacterBody2D
 
 var speed = 300
+var laserScene = preload("res://scenes/laser.tscn")
+@onready var containerNode = $LaserContainer
+
+func _process(delta):
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
+	
 
 func _physics_process(delta):
 	velocity = Vector2(0,0)
@@ -15,3 +22,13 @@ func _physics_process(delta):
 		velocity.x = speed
 	
 	move_and_slide()
+	
+	var screenSize = get_viewport_rect().size
+	global_position = global_position.clamp(Vector2(0,0),screenSize)
+	
+
+func shoot():
+	var laserInstance = laserScene.instantiate()
+	containerNode.add_child(laserInstance)
+	laserInstance.global_position = global_position
+	laserInstance.global_position.x += 50

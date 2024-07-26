@@ -5,6 +5,7 @@ signal tookDamage
 var speed: int = 300
 var laserScene = preload("res://scenes/laser.tscn")
 @onready var containerNode: Node = $LaserContainer
+@onready var laserSound: Node = $Laser
 
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -34,6 +35,7 @@ func shoot():
 	laserInstance.global_position = global_position
 	laserInstance.global_position.x += 50
 	containerNode.add_child(laserInstance)
+	laserSound.play()
 
 func damage():
 	tookDamage.emit()

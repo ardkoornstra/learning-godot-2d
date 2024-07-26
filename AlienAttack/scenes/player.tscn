@@ -1,7 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://deal4gvv4rl35"]
+[gd_scene load_steps=9 format=3 uid="uid://deal4gvv4rl35"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ijjtt"]
 [ext_resource type="Texture2D" uid="uid://bfxp2x4liosm3" path="res://assets/textures/playerShip2_red.png" id="1_kcpaq"]
+[ext_resource type="AudioStream" uid="uid://binuq5ial2jsw" path="res://assets/sounds/laserLarge_000.ogg" id="3_yxcjx"]
+
+[sub_resource type="Gradient" id="Gradient_hi05r"]
+offsets = PackedFloat32Array(0, 0.188525, 0.491803, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.93, 0.6479, 0.279, 1, 0.9, 0.315, 0, 1, 0.9, 0.15, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gbn1q"]
+gradient = SubResource("Gradient_hi05r")
+
+[sub_resource type="Curve" id="Curve_p7hrg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4qste"]
+curve = SubResource("Curve_p7hrg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hmyp3"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 10, 1)
+spread = 15.0
+initial_velocity_min = -200.0
+initial_velocity_max = -200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 8.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_4qste")
+color_ramp = SubResource("GradientTexture1D_gbn1q")
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
@@ -17,3 +46,16 @@ texture = ExtResource("1_kcpaq")
 polygon = PackedVector2Array(37, 0, 16, 11, -6, 53, -33, 37, -37, 12, -37, -12, -33, -37, -6, -53, 16, -11)
 
 [node name="LaserContainer" type="Node" parent="."]
+
+[node name="Laser" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yxcjx")
+volume_db = -5.0
+
+[node name="Fire" type="GPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-37, 0)
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_hmyp3")
+lifetime = 1.5
+preprocess = 1.0
+local_coords = true

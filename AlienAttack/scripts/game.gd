@@ -4,6 +4,8 @@ var lives: int = 3
 var score: int = 0
 
 var gameOverScene = preload("res://scenes/game_over.tscn")
+var pathEnemyTexture = preload("res://assets/textures/enemyBlue1.png")
+
 @onready var player: Node = $Player
 @onready var hud: Node = $UI/HUD
 @onready var hitSound: Node = $Hit
@@ -42,6 +44,12 @@ func reduceLives():
 func endGame():
 	player.die()
 	await get_tree().create_timer(1.5).timeout
-	var gameOver = gameOverScene.instantiate()		
+	var gameOver = gameOverScene.instantiate()
 	$UI.add_child(gameOver)
 	gameOver.setScore(score)
+
+
+func _on_enemy_spawner_path_enemy_spawned(pathInstance):
+	add_child(pathInstance)
+	pathInstance.enemy.get_node("Sprite2D").texture = pathEnemyTexture
+	pathInstance.enemy.killed.connect(_on_enemy_killed)

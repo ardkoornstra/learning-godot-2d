@@ -58,4 +58,3 @@ amount = 500
 process_material = SubResource("ParticleProcessMaterial_hmyp3")
 lifetime = 1.5
 preprocess = 1.0
-local_coords = true

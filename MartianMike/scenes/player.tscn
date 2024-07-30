@@ -211,4 +211,6 @@ position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_5veem")
 animation = &"run"
 autoplay = "idle"
-frame_progress = 0.576069
+frame_progress = 0.52545
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -200,6 +200,8 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_l2k8b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -209,8 +211,9 @@ shape = SubResource("RectangleShape2D_gavl1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_5veem")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.52545
+frame_progress = 0.795482
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 200

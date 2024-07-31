@@ -1,14 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmluy13j6ljfk"]
+[gd_scene load_steps=8 format=3 uid="uid://cmluy13j6ljfk"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_wmatu"]
 [ext_resource type="PackedScene" uid="uid://de5rpxdtp8t3" path="res://scenes/player.tscn" id="2_uv8ha"]
-[ext_resource type="Texture2D" uid="uid://l0eqb234jdw8" path="res://assets/icon.svg" id="3_y0573"]
 [ext_resource type="PackedScene" uid="uid://ddbaykcbt261q" path="res://scenes/saw.tscn" id="4_a46qm"]
 [ext_resource type="PackedScene" uid="uid://ck7sm4lenck0h" path="res://scenes/jump_pad.tscn" id="4_ivrba"]
 [ext_resource type="PackedScene" uid="uid://sc8lj8arkolu" path="res://scenes/spike.tscn" id="5_j1maa"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcfqk"]
-size = Vector2(416, 20)
+[ext_resource type="PackedScene" uid="uid://ddng8twggbnp1" path="res://scenes/tile_map.tscn" id="7_ylght"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mqtyp"]
 
@@ -16,19 +13,7 @@ size = Vector2(416, 20)
 script = ExtResource("1_wmatu")
 
 [node name="Player" parent="." instance=ExtResource("2_uv8ha")]
-position = Vector2(222, 130)
-
-[node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(221, 170)
-collision_mask = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="Floor"]
-position = Vector2(0, -0.500007)
-scale = Vector2(3.25, 0.148438)
-texture = ExtResource("3_y0573")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("RectangleShape2D_bcfqk")
+position = Vector2(222, 200)
 
 [node name="Deathzone" type="Area2D" parent="."]
 position = Vector2(77, 323)
@@ -40,21 +25,24 @@ position = Vector2(144, -48)
 shape = SubResource("WorldBoundaryShape2D_mqtyp")
 
 [node name="Spawn" type="Marker2D" parent="."]
-position = Vector2(222, 130)
+position = Vector2(222, 200)
 
 [node name="Traps" type="Node2D" parent="."]
 
 [node name="Saw" parent="Traps" instance=ExtResource("4_a46qm")]
-position = Vector2(147, 137)
+position = Vector2(137, 204)
 
 [node name="Spike" parent="Traps" instance=ExtResource("5_j1maa")]
-position = Vector2(364, 144)
+position = Vector2(368, 204)
 
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="JumpPad" parent="Objects" instance=ExtResource("4_ivrba")]
-position = Vector2(307, 160)
+position = Vector2(318, 224)
+
+[node name="JumpPad2" parent="Objects" instance=ExtResource("4_ivrba")]
+position = Vector2(186, 224)
+
+[node name="TileMap" parent="." instance=ExtResource("7_ylght")]
 
 [connection signal="body_entered" from="Deathzone" to="." method="_on_deathzone_body_entered"]
-[connection signal="touchedPlayer" from="Traps/Saw" to="." method="_on_trap_touched_player"]
-[connection signal="touchedPlayer" from="Traps/Spike" to="." method="_on_trap_touched_player"]

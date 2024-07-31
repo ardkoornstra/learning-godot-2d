@@ -3,6 +3,11 @@ extends Node2D
 @onready var spawn: Node = $Spawn
 @onready var player: Node = $Player
 
+func _ready():
+	var traps: Array[Node] = get_tree().get_nodes_in_group("traps")
+	for trap in traps:
+		trap.touchedPlayer.connect(_on_trap_touched_player)
+
 func _process(delta):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()

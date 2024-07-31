@@ -7,16 +7,21 @@ class_name Player
 
 @onready var sprite: Node = $AnimatedSprite2D
 
+var active: bool = true
+
 func _physics_process(delta):
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		if velocity.y > 500:
 			velocity.y = 500
 	
-	if Input.is_action_just_pressed("jump") && is_on_floor():
-		jump(jumpForce)
+	var direction: float = 0
 	
-	var direction: float = Input.get_axis("left", "right")
+	if active:
+		if Input.is_action_just_pressed("jump") && is_on_floor():
+			jump(jumpForce)
+	
+		direction = Input.get_axis("left", "right")
 	if direction != 0:
 		sprite.flip_h = (direction == -1)
 	velocity.x = direction * speed

@@ -2,7 +2,9 @@ extends Node2D
 
 @onready var spawn: Node = $Start
 @onready var finish: Node = $Finish
+@onready var deathzone: Node = $Deathzone
 var player: Node = null
+var timer: Node = null
 
 @export var nextLevel: PackedScene = null
 
@@ -16,6 +18,10 @@ func _ready():
 		trap.touchedPlayer.connect(_on_trap_touched_player)
 	
 	finish.body_entered.connect(_on_finish_body_entered)
+	deathzone.body_entered.connect(_on_deathzone_body_entered)
+	
+	timer = Timer.new()
+	add_child(timer)
 
 func _process(delta):
 	if Input.is_action_just_pressed("quit"):

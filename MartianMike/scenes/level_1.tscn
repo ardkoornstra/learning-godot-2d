@@ -1,0 +1,37 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmluy13j6ljfk"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_3y7wt"]
+[ext_resource type="PackedScene" uid="uid://co1n636p81a65" path="res://scenes/level_2.tscn" id="2_pb40u"]
+[ext_resource type="PackedScene" uid="uid://di1cmhkrk6uwk" path="res://scenes/parallax_background.tscn" id="3_ja3aq"]
+[ext_resource type="PackedScene" uid="uid://ddng8twggbnp1" path="res://scenes/tile_map.tscn" id="4_ifvdb"]
+[ext_resource type="PackedScene" uid="uid://de5rpxdtp8t3" path="res://scenes/player.tscn" id="5_8cxe2"]
+[ext_resource type="PackedScene" uid="uid://dn2d0ylxouujf" path="res://scenes/start.tscn" id="6_xwrm6"]
+[ext_resource type="PackedScene" uid="uid://j1qh8cxg5cjf" path="res://scenes/finish.tscn" id="7_3gf7j"]
+[ext_resource type="PackedScene" uid="uid://6upnrmoexq50" path="res://scenes/deathzone.tscn" id="8_t7rxr"]
+[ext_resource type="PackedScene" uid="uid://ck7sm4lenck0h" path="res://scenes/jump_pad.tscn" id="9_ydsqo"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_3y7wt")
+nextLevel = ExtResource("2_pb40u")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_ja3aq")]
+
+[node name="TileMap" parent="." instance=ExtResource("4_ifvdb")]
+
+[node name="Player" parent="." instance=ExtResource("5_8cxe2")]
+position = Vector2(231, 131)
+
+[node name="Start" parent="." instance=ExtResource("6_xwrm6")]
+position = Vector2(200, 208)
+
+[node name="Finish" parent="." instance=ExtResource("7_3gf7j")]
+position = Vector2(402, 176)
+
+[node name="Deathzone" parent="." instance=ExtResource("8_t7rxr")]
+
+[node name="Traps" type="Node2D" parent="."]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="JumpPad" parent="Objects" instance=ExtResource("9_ydsqo")]
+position = Vector2(601, 144)

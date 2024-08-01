@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://0dqbr50a6my3"]
+[gd_scene load_steps=10 format=3 uid="uid://0dqbr50a6my3"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_m13yu"]
 [ext_resource type="PackedScene" uid="uid://di1cmhkrk6uwk" path="res://scenes/parallax_background.tscn" id="1_tm22f"]
+[ext_resource type="PackedScene" uid="uid://4r66blbajtd7" path="res://scenes/ui.tscn" id="2_0jqrd"]
 [ext_resource type="Texture2D" uid="uid://kbhgslc8im75" path="res://assets/textures/bg/Yellow.png" id="2_yg7ec"]
 [ext_resource type="PackedScene" uid="uid://ddng8twggbnp1" path="res://scenes/tile_map.tscn" id="3_85lf2"]
 [ext_resource type="PackedScene" uid="uid://de5rpxdtp8t3" path="res://scenes/player.tscn" id="4_7m4ur"]
@@ -11,6 +12,8 @@
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_m13yu")
+
+[node name="UI" parent="." instance=ExtResource("2_0jqrd")]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_tm22f")]
 texture = ExtResource("2_yg7ec")

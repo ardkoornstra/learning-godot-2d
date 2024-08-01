@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://co1n636p81a65"]
+[gd_scene load_steps=11 format=3 uid="uid://co1n636p81a65"]
 
 [ext_resource type="PackedScene" uid="uid://de5rpxdtp8t3" path="res://scenes/player.tscn" id="1_6sqne"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_dpxi1"]
 [ext_resource type="PackedScene" uid="uid://di1cmhkrk6uwk" path="res://scenes/parallax_background.tscn" id="2_7voxk"]
 [ext_resource type="PackedScene" uid="uid://0dqbr50a6my3" path="res://scenes/level_3.tscn" id="2_gtqfo"]
+[ext_resource type="PackedScene" uid="uid://4r66blbajtd7" path="res://scenes/ui.tscn" id="3_jj0ix"]
 [ext_resource type="Texture2D" uid="uid://be215p4hlffip" path="res://assets/textures/bg/Pink.png" id="3_n6lqc"]
 [ext_resource type="PackedScene" uid="uid://dn2d0ylxouujf" path="res://scenes/start.tscn" id="4_6yn4e"]
 [ext_resource type="PackedScene" uid="uid://j1qh8cxg5cjf" path="res://scenes/finish.tscn" id="5_pmk7w"]
@@ -13,6 +14,8 @@
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_dpxi1")
 nextLevel = ExtResource("2_gtqfo")
+
+[node name="UI" parent="." instance=ExtResource("3_jj0ix")]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_7voxk")]
 texture = ExtResource("3_n6lqc")

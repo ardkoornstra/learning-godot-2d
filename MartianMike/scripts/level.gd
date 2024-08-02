@@ -4,6 +4,7 @@ extends Node2D
 @onready var finish: Node = $Finish
 @onready var deathzone: Node = $Deathzone
 @onready var hud: Node = $UI/HUD
+@onready var ui: Node  = $UI
 var player: Node = null
 var timer: Node = null
 
@@ -12,6 +13,7 @@ var timeLeft: float
 var win: bool = false
 
 @export var nextLevel: PackedScene = null
+@export var isFinalLevel: bool = false
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -55,12 +57,15 @@ func resetPlayer():
 	player.global_position = spawn.getSpawnPosition()
 
 func _on_finish_body_entered(body):
-	if (body is Player) && (nextLevel != null):
+	if (body is Player) && (isFinalLevel || (nextLevel != null)):
 		win = true
 		finish.animate()
 		player.active = false
 		await get_tree().create_timer(1.5).timeout
-		get_tree().change_scene_to_packed(nextLevel)
+		if isFinalLevel:
+			ui.showWinScreen(true)
+		else:
+			get_tree().change_scene_to_packed(nextLevel)
 
 func _on_leveltimer_timeout():
 	if !win:

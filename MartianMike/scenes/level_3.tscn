@@ -12,6 +12,7 @@
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_m13yu")
+isFinalLevel = true
 
 [node name="UI" parent="." instance=ExtResource("2_0jqrd")]
 

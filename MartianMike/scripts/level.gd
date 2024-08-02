@@ -53,6 +53,7 @@ func _on_trap_touched_player():
 	resetPlayer()
 
 func resetPlayer():
+	AudioPlayer.playSFX("hurt")
 	player.velocity = Vector2.ZERO
 	player.global_position = spawn.getSpawnPosition()
 	timeLeft = levelTime
@@ -61,6 +62,7 @@ func resetPlayer():
 func _on_finish_body_entered(body):
 	if (body is Player) && (isFinalLevel || (nextLevel != null)):
 		win = true
+		AudioPlayer.playSFX("win")
 		finish.animate()
 		player.active = false
 		await get_tree().create_timer(1.5).timeout

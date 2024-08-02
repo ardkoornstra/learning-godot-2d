@@ -6,4 +6,5 @@ extends Area2D
 func _on_body_entered(body):
 	if body is Player:
 		sprite.play("jump")
+		AudioPlayer.playSFX("jump")
 		body.jump(jumpForce)

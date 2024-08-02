@@ -55,6 +55,8 @@ func _on_trap_touched_player():
 func resetPlayer():
 	player.velocity = Vector2.ZERO
 	player.global_position = spawn.getSpawnPosition()
+	timeLeft = levelTime
+	hud.setTime(timeLeft)
 
 func _on_finish_body_entered(body):
 	if (body is Player) && (isFinalLevel || (nextLevel != null)):
@@ -73,5 +75,3 @@ func _on_leveltimer_timeout():
 		hud.setTime(timeLeft)
 		if timeLeft < 0:
 			resetPlayer()
-			timeLeft = levelTime
-			hud.setTime(timeLeft)

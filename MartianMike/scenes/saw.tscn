@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqqejo7sscsof" path="res://assets/textures/other/Saw.png" id="1_u1lb2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_urt0l"]
-radius = 20.0998
+radius = 15.0
 
 [sub_resource type="Animation" id="Animation_o7dss"]
 length = 0.001
